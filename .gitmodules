@@ -22,3 +22,6 @@
 [submodule "clBLAS"]
 	path = clBLAS
 	url = https://github.com/Davidleeh/clBLAS.git
+[submodule "opencl"]
+	path = opencl
+	url = https://github.com/Davidleeh/opencl.git
