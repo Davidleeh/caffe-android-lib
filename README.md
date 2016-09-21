@@ -1,31 +1,35 @@
 Caffe-Android-Lib
 ===============
 ## Goal
-Porting [caffe](https://github.com/BVLC/caffe) to android platform
+* Porting [caffe](https://github.com/BVLC/caffe) to android platform
+* Porting ML-related libraries, eg. clBLAS, to android platform
 
 ### Support
 * Up-to-date caffe ([d91572d](https://github.com/BVLC/caffe/commit/d91572da2ea5e63c9eaacaf013dfbcbc0ada5f67))
-* CPU only
+* CPU only for caffe
 * Without support for some IO libs (leveldb and hdf5)
 
 ## Build
-Tested with Android NDK r11c and cmake 3.3.2 on Ubuntu 14.04
+Tested with Android NDK r11c/r12b and cmake 3.2.2/3.3.2 on Ubuntu 14.04
 
 ```shell
-git clone --recursive https://github.com/sh1r0/caffe-android-lib.git
+git clone --recursive https://github.com/Davidleeh/caffe-android-lib.git
 cd caffe-android-lib
-export ANDROID_ABI="arm64-v8a" # Optional, see the note below
+export ANDROID_ABI="x86" # Optional, see the note below
 ./build.sh <path/to/ndk>
 ```
 
-### NOTE: OpenBLAS
-OpenBLAS is the only supported BLAS choice now, and the supported ABIs are the following:
+### NOTE: BLAS Supports
+- clBLAS
+  - clBLAS is a supported BLAS choice now for android platform. It uses OpenCL backend.
 
-* `armeabi`
-* `armeabi-v7a-hard-softfp with NEON`
-* `arm64-v8a` (default)
-* `x86`
-* `x86_64`
+- OpenBLAS
+  - OpenBLAS is also a supported BLAS choice, and the supported ABIs are the following:
+    - `armeabi`
+    - `armeabi-v7a-hard-softfp with NEON`
+    - `arm64-v8a` 
+    - `x86` (default)
+    - `x86_64`
 
 ## Issues
 
