@@ -15,6 +15,7 @@ WD=$(readlink -f "`dirname $0`/..")
 OPENCV_ROOT=${WD}/opencv
 BUILD_DIR=$OPENCV_ROOT/platforms/build_android
 INSTALL_DIR=${WD}/android_lib
+OPENCL_DIR=${WD}/opencl/intel_CHT/
 N_JOBS=${N_JOBS:-4}
 
 if [ "${ANDROID_ABI}" = "armeabi" ]; then
@@ -33,11 +34,16 @@ cmake -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
       -DANDROID_NATIVE_API_LEVEL=${API_LEVEL} \
       -DANDROID_ABI="${ANDROID_ABI}" \
       -D WITH_CUDA=OFF \
+      -D WITH_IPP=ON \
+      -D WITH_TBB=ON \
       -D WITH_MATLAB=OFF \
       -D BUILD_ANDROID_EXAMPLES=OFF \
       -D BUILD_DOCS=OFF \
       -D BUILD_PERF_TESTS=OFF \
       -D BUILD_TESTS=OFF \
+      -D WITH_OPENCL=ON \
+      -D OPENCL_INCLUDE_DIRS="${OPENCL_DIR}/include" \
+      -D OPENCL_LIBRARIES="${OPENCL_DIR}/libOpenCL.so" \
       -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}/opencv" \
       ../..
 
