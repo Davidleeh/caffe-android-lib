@@ -14,7 +14,7 @@ fi
 WD=$(readlink -f "$(dirname "$0")")
 cd "${WD}"
 
-export ANDROID_ABI="${ANDROID_ABI:-"arm64-v8a"}"
+export ANDROID_ABI="${ANDROID_ABI:-"x86"}"
 export N_JOBS=${N_JOBS:-1}
 
 if ! ./scripts/build_openblas.sh ; then
@@ -29,6 +29,7 @@ fi
 ./scripts/build_opencv.sh
 ./scripts/build_protobuf_host.sh
 ./scripts/build_protobuf.sh
+./scripts/build_clblas.sh
 ./scripts/build_caffe.sh
 
 echo "DONE!!"
